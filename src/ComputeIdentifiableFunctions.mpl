@@ -29,7 +29,7 @@ FieldToIdeal := proc(gens)
     end do:
     #gb := Groebner[Basis]([op(polys), common_denom * t - 1], plex(t, op(all_dupl))):
 
-    gb := Groebner[Basis]([op(polys), common_denom * t - 1], tdeg(t, op(all_dupl))):
+    gb := Groebner[Basis]([op(polys), subs(subs_dupl, common_denom) * t - 1], tdeg(t, op(all_dupl))):
     gb := Groebner[Walk](gb, tdeg(t, op(all_dupl)), lexdeg([t], [op(all_dupl)])):
     
     gb := select(p -> not (t in indets(p)), gb):
